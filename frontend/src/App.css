@@ -1,0 +1,471 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+  font-family: 'DM Sans', sans-serif;
+  color: #203342;
+  background: #f5f8fa;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  --teal: #087f8c;
+  --muted: #82909c;
+  --border: #e8edf0;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; min-height: 100vh; }
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+a { text-decoration: none; }
+
+.app-shell { min-height: 100vh; }
+.sidebar {
+  width: 245px; background: #fff; border-right: 1px solid var(--border);
+  position: fixed; inset: 0 auto 0 0; padding: 30px 19px;
+  display: flex; flex-direction: column; z-index: 2;
+}
+.brand { display: flex; align-items: center; gap: 10px; font: 800 25px Manrope, sans-serif; letter-spacing: -1px; padding: 0 8px; color: #203342; }
+.brand-icon { display: grid; place-items: center; width: 37px; height: 37px; color: white; background: var(--teal); border-radius: 12px; font-size: 24px; }
+.brand-accent { color: var(--teal); }
+.sidebar-label, .eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 1.7px; color: #8796a1; }
+.sidebar-label { margin: 48px 10px 14px; }
+.nav-link { display: flex; align-items: center; gap: 13px; padding: 13px 14px; border-radius: 10px; color: #73828d; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+.nav-link.active { color: var(--teal); background: #eaf7f7; }
+.sidebar-bottom { display: flex; align-items: center; gap: 12px; margin-top: auto; padding: 15px 10px; border-top: 1px solid var(--border); }
+.help-icon { width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid #dce8eb; border-radius: 50%; color: var(--teal); font-weight: 700; }
+.sidebar-bottom strong { font-size: 11px; }
+.sidebar-bottom p { font-size: 10px; color: var(--muted); margin: 5px 0 0; }
+
+.main-content { margin-left: 245px; padding: 0 38px 22px; max-width: 1800px; }
+.topbar { height: 78px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
+.breadcrumb { font-size: 12px; color: #7d8b95; }
+.breadcrumb span { margin: 0 9px; color: #c1cbd0; }
+.profile { display: flex; align-items: center; gap: 10px; }
+.profile-avatar { display: grid; place-items: center; background: #dff2f0; color: var(--teal); width: 38px; height: 38px; border-radius: 50%; font-weight: 700; }
+.profile strong, .profile small { display: block; }
+.profile strong { font-size: 12px; }
+.profile small { color: var(--muted); font-size: 10px; margin-top: 4px; }
+
+.welcome { position: relative; overflow: hidden; margin-top: 28px; padding: 29px 34px; border-radius: 17px; background: linear-gradient(110deg, #e4f5f3, #eff8f8 65%, #e4f0f7); min-height: 175px; display: flex; align-items: center; justify-content: space-between; }
+.welcome .eyebrow { color: var(--teal); }
+.welcome h1 { font: 800 clamp(23px, 2.5vw, 33px) Manrope, sans-serif; letter-spacing: -1px; margin: 10px 0; color: #193c49; }
+.welcome-text { font-size: 13px; color: #657c87; margin: 0; line-height: 1.7; max-width: 490px; }
+.welcome-symbol { position: absolute; right: 47px; top: 10px; font-size: 130px; color: #b8e0dc; opacity: .48; transform: rotate(-12deg); }
+
+.stats-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin: 23px 0; }
+.stat-card, .panel { background: #fff; border: 1px solid var(--border); border-radius: 14px; }
+.stat-card { padding: 20px 21px; min-height: 145px; }
+.stat-icon { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; font-size: 20px; }
+.teal { color: #087f8c; background: #e6f6f4; }
+.blue { color: #4277d5; background: #eaf1ff; }
+.purple { color: #8b64c6; background: #f1eaff; }
+.stat-card p { margin: 13px 0 3px; font-size: 12px; color: #788894; }
+.stat-card h2 { font: 800 25px Manrope, sans-serif; margin: 2px 0 4px; }
+.stat-card > span { color: #9aa6ae; font-size: 10px; }
+
+.content-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; align-items: stretch; }
+.panel { padding: 23px; min-width: 0; }
+.panel-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.panel-heading .eyebrow { margin: 0 0 7px; }
+.panel-heading h2 { font: 700 17px Manrope, sans-serif; margin: 0; letter-spacing: -.4px; }
+.heading-icon { display: grid; place-items: center; width: 35px; height: 35px; background: #e8f6f5; color: var(--teal); border-radius: 10px; font-size: 22px; }
+.panel-description { color: #8a98a2; font-size: 11px; margin: 10px 0 21px; line-height: 1.6; }
+.booking-panel form { display: flex; flex-direction: column; }
+.booking-panel label { font-size: 11px; font-weight: 700; margin: 0 0 8px; }
+.booking-panel input, .booking-panel select { width: 100%; min-width: 0; height: 43px; border: 1px solid #e0e8eb; background: #fff; border-radius: 8px; padding: 0 11px; margin-bottom: 17px; outline: none; color: #354b58; font-size: 11px; }
+.booking-panel input:focus, .booking-panel select:focus { border-color: #53afb1; box-shadow: 0 0 0 3px #e8f6f5; }
+.booking-panel input::placeholder { color: #b2bdc4; }
+.primary-button { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 13px 15px; border: 0; border-radius: 9px; background: var(--teal); color: white; font-size: 12px; font-weight: 700; transition: background .2s; }
+.primary-button:hover { background: #066b76; }
+.primary-button span { font-size: 18px; }
+.secure-note { color: #94a1aa; font-size: 10px; margin: 16px 0 0; }
+
+.doctor-count { font-size: 10px; padding: 7px 9px; border-radius: 20px; background: #edf8f6; color: var(--teal); font-weight: 700; white-space: nowrap; }
+.doctor-row { display: flex; align-items: center; gap: 11px; padding: 15px 0; border-bottom: 1px solid #edf0f2; }
+.doctor-avatar { display: grid; place-items: center; width: 39px; height: 39px; border-radius: 12px; flex-shrink: 0; font-size: 11px; font-weight: 800; }
+.avatar-0 { background: #e5f3f7; color: #347e98; }
+.avatar-1 { background: #f4e9fa; color: #9660ae; }
+.avatar-2 { background: #fff0e4; color: #bd7948; }
+.doctor-info { flex: 1; min-width: 0; }
+.doctor-info strong, .doctor-info span { display: block; }
+.doctor-info strong { font-size: 11px; }
+.doctor-info span { color: #8a98a2; font-size: 10px; margin-top: 5px; }
+.availability { background: #eaf7ee; color: #378354; font-size: 9px; padding: 6px 8px; border-radius: 6px; white-space: nowrap; }
+.availability.unavailable { background: #fff0ed; color: #bb5549; }
+.care-note { display: flex; gap: 10px; background: #f2f8fc; border-radius: 10px; padding: 13px; margin-top: 17px; }
+.care-note > span { color: #518ab5; font-size: 18px; }
+.care-note strong { font-size: 10px; }
+.care-note p { margin: 5px 0 0; color: #8497a4; font-size: 10px; line-height: 1.6; }
+
+.appointments-panel { margin-top: 22px; }
+.refresh-button { border: 1px solid #e1e9ec; background: #fff; color: #526a77; padding: 9px 12px; border-radius: 8px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+.refresh-button:hover { background: #f2f8f8; }
+.table-wrap { width: 100%; overflow-x: auto; margin-top: 22px; }
+table { width: 100%; border-collapse: collapse; text-align: left; }
+th { font-size: 9px; color: #94a0a8; letter-spacing: .8px; font-weight: 700; background: #f8fafb; }
+td { font-size: 11px; color: #6c7c87; }
+th, td { padding: 14px 12px; border-bottom: 1px solid #edf0f2; white-space: nowrap; }
+td strong { color: #354b58; font-weight: 600; }
+.status { display: inline-block; padding: 6px 8px; border-radius: 6px; font-size: 9px; font-weight: 700; }
+.status-booked { background: #e6f6f2; color: #26836e; }
+.status-cancelled { background: #fff0ed; color: #bc594d; }
+.status-completed { background: #eaf0ff; color: #4d6fc1; }
+.status-no_show { background: #fff2dd; color: #a56b20; }
+.cancel-button { border: 1px solid #f0d4d0; background: #fff; color: #bd594e; padding: 6px 9px; border-radius: 6px; font-size: 10px; }
+.cancel-button:hover { background: #fff2ef; }
+.empty-state { display: flex; flex-direction: column; align-items: center; padding: 35px 10px 20px; text-align: center; }
+.empty-state > span { font-size: 26px; color: #a3c9cb; margin-bottom: 10px; }
+.empty-state strong { font-size: 12px; }
+.empty-state p { color: #8a98a2; font-size: 11px; }
+.message { margin: 18px 0; padding: 13px 16px; border-radius: 9px; background: #eaf7f5; color: #176b69; border: 1px solid #cdebe5; font-size: 12px; overflow-wrap: anywhere; }
+footer { text-align: center; color: #98a5ad; font-size: 10px; padding: 27px 0 7px; }
+
+@media (min-width: 1500px) { .main-content { margin-left: 260px; padding-left: 48px; padding-right: 48px; } .sidebar { width: 260px; } }
+@media (max-width: 1100px) { .sidebar { width: 205px; padding-left: 13px; padding-right: 13px; } .main-content { margin-left: 205px; padding-left: 22px; padding-right: 22px; } .content-grid { grid-template-columns: 1fr; } }
+@media (max-width: 700px) {
+  .sidebar { position: static; width: 100%; height: auto; padding: 15px; border-right: 0; border-bottom: 1px solid var(--border); }
+  .brand { font-size: 22px; }
+  .sidebar-label, .sidebar-bottom { display: none; }
+  .sidebar .nav-link { display: inline-flex; padding: 9px 10px; margin: 13px 3px 0 0; font-size: 11px; }
+  .main-content { margin-left: 0; padding: 0 14px 18px; }
+  .topbar { height: 61px; }
+  .welcome { padding: 23px 19px; margin-top: 18px; min-height: 160px; }
+  .welcome-symbol { right: -14px; top: 28px; font-size: 95px; }
+  .welcome-text { max-width: 85%; font-size: 12px; }
+  .stats-grid { gap: 9px; margin: 14px 0; }
+  .stat-card { padding: 13px 10px; min-height: 128px; }
+  .stat-card p { font-size: 10px; line-height: 1.4; }
+  .stat-card h2 { font-size: 22px; }
+  .stat-card > span { font-size: 9px; }
+  .stat-icon { width: 30px; height: 30px; }
+  .panel { padding: 17px; }
+  .content-grid { gap: 14px; }
+  .appointments-panel { margin-top: 14px; }
+  .profile small { font-size: 9px; }
+  .breadcrumb { font-size: 10px; }
+}
+@media (max-width: 400px) {
+  .stats-grid { grid-template-columns: 1fr; }
+  .stat-card { min-height: 0; }
+  .welcome h1 { font-size: 23px; }
+  .panel-heading h2 { font-size: 15px; }
+  .doctor-count { font-size: 9px; }
+}
+
+/* MediSlot professional dashboard theme */
+body {
+  background: linear-gradient(135deg, #e0f2fe 0%, #e0e7ff 48%, #ccfbf1 100%) !important;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.dashboard,
+.app,
+.main-content {
+  background: transparent !important;
+}
+
+.card,
+.stat-card,
+.appointment-card,
+.appointments-section {
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 18px;
+  box-shadow: 0 8px 28px rgba(30, 64, 175, 0.09);
+}
+
+button {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 14px rgba(37, 99, 235, 0.18);
+}
+
+
+/* MediSlot — modern lavender and indigo theme */
+:root {
+  --ms-purple: #5b4bdb;
+  --ms-indigo: #211b52;
+  --ms-lavender: #f2efff;
+  --ms-text: #25234a;
+  --ms-muted: #77758f;
+}
+
+body {
+  background: linear-gradient(135deg, #f6f3ff 0%, #edf3ff 55%, #f0faff 100%) !important;
+  color: var(--ms-text);
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app-shell {
+  background: transparent !important;
+}
+
+.sidebar {
+  background: linear-gradient(180deg, #29215f 0%, #4534a2 100%) !important;
+  color: #fff !important;
+  box-shadow: 8px 0 30px rgba(48, 35, 120, .12);
+}
+
+.sidebar a {
+  border-radius: 12px;
+  transition: background .2s ease, transform .2s ease;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  background: rgba(255,255,255,.15);
+  color: #fff;
+}
+
+.panel,
+.stat-card,
+.card {
+  background: rgba(255,255,255,.92) !important;
+  border: 1px solid rgba(111,91,220,.12) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 10px 30px rgba(48,35,120,.08) !important;
+}
+
+.primary-button {
+  background: linear-gradient(135deg, #6555e8, #4936bd) !important;
+  color: #fff !important;
+  border: 0 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 6px 16px rgba(91,75,219,.22);
+}
+
+.primary-button:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+
+input, select {
+  border-radius: 11px !important;
+  border-color: #ded9f5 !important;
+  background: #fff !important;
+}
+
+input:focus, select:focus {
+  outline: 2px solid rgba(91,75,219,.18);
+  border-color: #7869e8 !important;
+}
+
+.panel-heading h2,
+.welcome h1 {
+  color: #282354;
+}
+
+.eyebrow {
+  color: #6957d5;
+  letter-spacing: 1.5px;
+}
+
+
+/* MediSlot dashboard logo */
+.dashboard-logo {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: #ffffff;
+  padding: 4px;
+  flex-shrink: 0;
+}
+
+.profile-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: #ffffff;
+  padding: 3px;
+  box-shadow: 0 3px 12px rgba(48, 35, 120, 0.12);
+  flex-shrink: 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* MediSlot — polished dashboard design */
+body {
+  background: linear-gradient(135deg, #f5f2ff 0%, #edf2ff 52%, #effaff 100%);
+  color: #28254b;
+}
+
+.app-shell {
+  background: transparent;
+}
+
+.sidebar {
+  background: linear-gradient(180deg, #241c55 0%, #4937a6 100%);
+  color: #ffffff;
+  box-shadow: 8px 0 30px rgba(38, 28, 92, 0.12);
+}
+
+.sidebar .brand {
+  color: #ffffff;
+  font-weight: 800;
+}
+
+.sidebar .brand-accent {
+  color: #c7c1ff;
+}
+
+.sidebar .nav-link {
+  border-radius: 12px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+}
+
+.main-content {
+  background: transparent;
+}
+
+.topbar {
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(112, 94, 207, 0.10);
+  border-radius: 18px;
+  box-shadow: 0 5px 22px rgba(44, 35, 105, 0.05);
+}
+
+.welcome {
+  background: linear-gradient(120deg, #5543c4 0%, #7665e8 58%, #9b8cf4 100%);
+  color: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 16px 36px rgba(85, 67, 196, 0.22);
+  overflow: hidden;
+}
+
+.welcome h1,
+.welcome .eyebrow,
+.welcome .welcome-text {
+  color: #ffffff;
+}
+
+.welcome .eyebrow {
+  opacity: 0.85;
+  letter-spacing: 1.8px;
+}
+
+.welcome .welcome-text {
+  opacity: 0.9;
+  line-height: 1.7;
+}
+
+.panel,
+.stat-card,
+.card {
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(112, 94, 207, 0.12);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(44, 35, 105, 0.07);
+}
+
+.primary-button {
+  background: linear-gradient(135deg, #6555e8, #4936bd);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(91, 75, 219, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.primary-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 9px 20px rgba(91, 75, 219, 0.25);
+}
+
+input,
+select {
+  border-radius: 11px;
+  border-color: #ded9f5;
+}
+
+input:focus,
+select:focus {
+  outline: 2px solid rgba(91, 75, 219, 0.18);
+  border-color: #7869e8;
+}
+
+.panel-heading h2,
+.welcome h1 {
+  letter-spacing: -0.5px;
+}
+
+.eyebrow {
+  color: #6957d5;
+}
+
+@media (max-width: 768px) {
+  .welcome {
+    border-radius: 18px;
+  }
+
+  .topbar {
+    border-radius: 14px;
+  }
+}
+
+/* MediSlot login — improved readability */
+.auth-page label,
+.auth-page .form-label {
+  color: #211b45 !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.auth-page input {
+  color: #211b45 !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  min-height: 48px;
+  padding: 12px 14px !important;
+  border: 1px solid #b9b2df !important;
+  border-radius: 10px !important;
+  background: #ffffff !important;
+}
+
+.auth-page input::placeholder {
+  color: #77738d !important;
+  opacity: 1;
+  font-size: 15px;
+}
+
+.auth-page input:focus {
+  outline: 2px solid #7564e8 !important;
+  border-color: #5b4bdb !important;
+}
+
+.auth-page button {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+}

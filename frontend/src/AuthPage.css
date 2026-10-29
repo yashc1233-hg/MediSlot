@@ -1,0 +1,702 @@
+﻿.auth-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 36px 20px;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 12% 15%, rgba(65, 196, 197, .28), transparent 35%),
+    radial-gradient(ellipse at 90% 85%, rgba(54, 119, 219, .30), transparent 36%),
+    linear-gradient(135deg, #071a32 0%, #103b59 48%, #087f8c 100%);
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  color: #172b45;
+}
+
+.auth-page::before,
+.auth-page::after {
+  content: "";
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.auth-page::before {
+  width: 420px;
+  height: 420px;
+  top: -210px;
+  right: -100px;
+}
+
+.auth-page::after {
+  width: 330px;
+  height: 330px;
+  bottom: -190px;
+  left: -90px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+  padding: 40px 38px 30px;
+  border: 1px solid rgba(255, 255, 255, .65);
+  border-radius: 25px;
+  background: rgba(255, 255, 255, .97);
+  box-shadow: 0 28px 80px rgba(0, 12, 35, .30);
+  animation: auth-appear .45s ease-out;
+}
+
+.auth-brand {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  color: #123353;
+}
+
+.auth-brand span {
+  color: #0797a1;
+}
+
+.auth-eyebrow {
+  margin: 9px 0 12px;
+  color: #07858d;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.auth-card h1 {
+  margin: 0;
+  color: #142b45;
+  font-size: clamp(27px, 5vw, 33px);
+  line-height: 1.2;
+  letter-spacing: -1px;
+  font-weight: 750;
+}
+
+.auth-subtitle {
+  margin: 12px 0 25px;
+  color: #6b7b8e;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.auth-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+  padding: 5px;
+  margin-bottom: 25px;
+  border-radius: 12px;
+  background: #edf3f7;
+}
+
+.auth-tabs button {
+  border: 0;
+  border-radius: 9px;
+  padding: 12px 10px;
+  background: transparent;
+  color: #617389;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 650;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease, box-shadow .2s ease;
+}
+
+.auth-tabs button.active {
+  background: #fff;
+  color: #087f8c;
+  box-shadow: 0 2px 8px rgba(21, 51, 76, .10);
+}
+
+.auth-tabs button:focus-visible,
+.auth-submit:focus-visible {
+  outline: 3px solid rgba(8, 127, 140, .35);
+  outline-offset: 3px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.auth-form label {
+  margin-top: 7px;
+  color: #30445c;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.auth-form input {
+  width: 100%;
+  min-height: 48px;
+  box-sizing: border-box;
+  padding: 13px 14px;
+  border: 1px solid #dce5ed;
+  border-radius: 11px;
+  outline: none;
+  background: #f9fbfd;
+  color: #172b45;
+  font: inherit;
+  font-size: 14px;
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.auth-form input::placeholder {
+  color: #9aa8b8;
+}
+
+.auth-form input:hover {
+  border-color: #b8cbd8;
+}
+
+.auth-form input:focus {
+  border-color: #078d98;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(8, 145, 155, .10);
+}
+
+.auth-submit {
+  width: 100%;
+  min-height: 49px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 11px;
+  background: linear-gradient(105deg, #087f8c, #0b9ca3);
+  color: #fff;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 750;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(8, 127, 140, .22);
+  transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+
+.auth-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(8, 127, 140, .28);
+  filter: brightness(1.04);
+}
+
+.auth-submit:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.auth-submit:disabled {
+  opacity: .65;
+  cursor: wait;
+}
+
+.auth-message {
+  margin: 7px 0 0;
+  padding: 11px 12px;
+  border: 1px solid #c8e8e4;
+  border-radius: 9px;
+  background: #effaf8;
+  color: #176b63;
+  font-size: 13px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.auth-footer {
+  margin: 25px 0 0;
+  padding-top: 19px;
+  border-top: 1px solid #edf1f5;
+  color: #8190a1;
+  font-size: 11px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+@keyframes auth-appear {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-page {
+    padding: 20px 14px;
+  }
+
+  .auth-card {
+    padding: 30px 23px 24px;
+    border-radius: 20px;
+  }
+
+  .auth-brand {
+    font-size: 29px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .auth-card {
+    animation: none;
+  }
+
+  .auth-tabs button,
+  .auth-form input,
+  .auth-submit {
+    transition: none;
+  }
+}
+
+.auth-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  letter-spacing: 0;
+}
+
+.auth-brand img {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.auth-brand span {
+  color: #087f8c;
+  font-size: 29px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+/* MediSlot premium midnight blue + emerald theme */
+.auth-page {
+  background:
+    radial-gradient(ellipse at 8% 12%, rgba(26, 188, 156, .16), transparent 38%),
+    radial-gradient(ellipse at 92% 88%, rgba(56, 112, 190, .20), transparent 40%),
+    linear-gradient(135deg, #091827 0%, #102a3a 52%, #103b43 100%);
+  color: #e8f3f4;
+}
+
+.auth-card {
+  background: linear-gradient(145deg, #142d3b, #102330);
+  border: 1px solid rgba(108, 194, 176, .22);
+  box-shadow: 0 28px 75px rgba(0, 0, 0, .34);
+}
+
+.auth-brand {
+  color: #edf7f5;
+}
+
+.auth-brand span {
+  color: #58d6b0;
+}
+
+.auth-eyebrow {
+  color: #66d9ba;
+}
+
+.auth-card h1 {
+  color: #f0f7f6;
+}
+
+.auth-subtitle {
+  color: #aec3ca;
+}
+
+.auth-tabs {
+  background: #0c202d;
+  border: 1px solid #27414d;
+}
+
+.auth-tabs button {
+  color: #a9c0c7;
+}
+
+.auth-tabs button.active {
+  color: #8ce8cd;
+  background: #1b4148;
+  box-shadow: inset 0 0 0 1px rgba(88, 214, 176, .25);
+}
+
+.auth-form label {
+  color: #d6e7e7;
+}
+
+.auth-form input {
+  color: #f1f8f7;
+  background: #0b202c;
+  border-color: #304b56;
+}
+
+.auth-form input::placeholder {
+  color: #8da7b0;
+}
+
+.auth-form input:hover {
+  border-color: #548c88;
+}
+
+.auth-form input:focus {
+  background: #102b36;
+  border-color: #58d6b0;
+  box-shadow: 0 0 0 4px rgba(88, 214, 176, .11);
+}
+
+.auth-submit {
+  color: #062a28;
+  background: linear-gradient(110deg, #45cba5, #71dfbd);
+  box-shadow: 0 8px 24px rgba(69, 203, 165, .17);
+}
+
+.auth-submit:hover:not(:disabled) {
+  box-shadow: 0 12px 28px rgba(69, 203, 165, .26);
+}
+
+.auth-message {
+  color: #a2f0d7;
+  background: #12352f;
+  border-color: #2c6c5a;
+}
+
+.auth-footer {
+  color: #9bb2ba;
+  border-top-color: #29404b;
+}
+
+/* Clear medical logo presentation */
+.auth-brand img {
+  width: 76px;
+  height: 76px;
+  padding: 4px;
+  box-sizing: border-box;
+  object-fit: contain;
+  background: #eaf3f8;
+  border: 1px solid #7daeb4;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, .2);
+  mix-blend-mode: normal;
+}
+
+@media (max-width: 480px) {
+  .auth-brand img {
+    width: 66px;
+    height: 66px;
+  }
+}
+
+/* MediSlot premium midnight blue + emerald theme */
+.auth-page {
+  background:
+    radial-gradient(ellipse at 8% 12%, rgba(26, 188, 156, .16), transparent 38%),
+    radial-gradient(ellipse at 92% 88%, rgba(56, 112, 190, .20), transparent 40%),
+    linear-gradient(135deg, #091827 0%, #102a3a 52%, #103b43 100%);
+  color: #e8f3f4;
+}
+
+.auth-card {
+  background: linear-gradient(145deg, #142d3b, #102330);
+  border: 1px solid rgba(108, 194, 176, .22);
+  box-shadow: 0 28px 75px rgba(0, 0, 0, .34);
+}
+
+.auth-brand {
+  color: #edf7f5;
+}
+
+.auth-brand span {
+  color: #58d6b0;
+}
+
+.auth-eyebrow {
+  color: #66d9ba;
+}
+
+.auth-card h1 {
+  color: #f0f7f6;
+}
+
+.auth-subtitle {
+  color: #aec3ca;
+}
+
+.auth-tabs {
+  background: #0c202d;
+  border: 1px solid #27414d;
+}
+
+.auth-tabs button {
+  color: #a9c0c7;
+}
+
+.auth-tabs button.active {
+  color: #8ce8cd;
+  background: #1b4148;
+  box-shadow: inset 0 0 0 1px rgba(88, 214, 176, .25);
+}
+
+.auth-form label {
+  color: #d6e7e7;
+}
+
+.auth-form input {
+  color: #f1f8f7;
+  background: #0b202c;
+  border-color: #304b56;
+}
+
+.auth-form input::placeholder {
+  color: #8da7b0;
+}
+
+.auth-form input:hover {
+  border-color: #548c88;
+}
+
+.auth-form input:focus {
+  background: #102b36;
+  border-color: #58d6b0;
+  box-shadow: 0 0 0 4px rgba(88, 214, 176, .11);
+}
+
+.auth-submit {
+  color: #062a28;
+  background: linear-gradient(110deg, #45cba5, #71dfbd);
+  box-shadow: 0 8px 24px rgba(69, 203, 165, .17);
+}
+
+.auth-submit:hover:not(:disabled) {
+  box-shadow: 0 12px 28px rgba(69, 203, 165, .26);
+}
+
+.auth-message {
+  color: #a2f0d7;
+  background: #12352f;
+  border-color: #2c6c5a;
+}
+
+.auth-footer {
+  color: #9bb2ba;
+  border-top-color: #29404b;
+}
+
+/* Clear medical logo presentation */
+.auth-brand img {
+  width: 76px;
+  height: 76px;
+  padding: 4px;
+  box-sizing: border-box;
+  object-fit: contain;
+  background: #eaf3f8;
+  border: 1px solid #7daeb4;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, .2);
+  mix-blend-mode: normal;
+}
+
+@media (max-width: 480px) {
+  .auth-brand img {
+    width: 66px;
+    height: 66px;
+  }
+}
+
+/* MediSlot premium midnight blue + emerald theme */
+.auth-page {
+  background:
+    radial-gradient(ellipse at 8% 12%, rgba(26, 188, 156, .16), transparent 38%),
+    radial-gradient(ellipse at 92% 88%, rgba(56, 112, 190, .20), transparent 40%),
+    linear-gradient(135deg, #091827 0%, #102a3a 52%, #103b43 100%);
+  color: #e8f3f4;
+}
+
+.auth-card {
+  background: linear-gradient(145deg, #142d3b, #102330);
+  border: 1px solid rgba(108, 194, 176, .22);
+  box-shadow: 0 28px 75px rgba(0, 0, 0, .34);
+}
+
+.auth-brand {
+  color: #edf7f5;
+}
+
+.auth-brand span {
+  color: #58d6b0;
+}
+
+.auth-eyebrow {
+  color: #66d9ba;
+}
+
+.auth-card h1 {
+  color: #f0f7f6;
+}
+
+.auth-subtitle {
+  color: #aec3ca;
+}
+
+.auth-tabs {
+  background: #0c202d;
+  border: 1px solid #27414d;
+}
+
+.auth-tabs button {
+  color: #a9c0c7;
+}
+
+.auth-tabs button.active {
+  color: #8ce8cd;
+  background: #1b4148;
+  box-shadow: inset 0 0 0 1px rgba(88, 214, 176, .25);
+}
+
+.auth-form label {
+  color: #d6e7e7;
+}
+
+.auth-form input {
+  color: #f1f8f7;
+  background: #0b202c;
+  border-color: #304b56;
+}
+
+.auth-form input::placeholder {
+  color: #8da7b0;
+}
+
+.auth-form input:hover {
+  border-color: #548c88;
+}
+
+.auth-form input:focus {
+  background: #102b36;
+  border-color: #58d6b0;
+  box-shadow: 0 0 0 4px rgba(88, 214, 176, .11);
+}
+
+.auth-submit {
+  color: #062a28;
+  background: linear-gradient(110deg, #45cba5, #71dfbd);
+  box-shadow: 0 8px 24px rgba(69, 203, 165, .17);
+}
+
+.auth-submit:hover:not(:disabled) {
+  box-shadow: 0 12px 28px rgba(69, 203, 165, .26);
+}
+
+.auth-message {
+  color: #a2f0d7;
+  background: #12352f;
+  border-color: #2c6c5a;
+}
+
+.auth-footer {
+  color: #9bb2ba;
+  border-top-color: #29404b;
+}
+
+/* Clear medical logo presentation */
+.auth-brand img {
+  width: 76px;
+  height: 76px;
+  padding: 4px;
+  box-sizing: border-box;
+  object-fit: contain;
+  background: #eaf3f8;
+  border: 1px solid #7daeb4;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, .2);
+  mix-blend-mode: normal;
+}
+
+@media (max-width: 480px) {
+  .auth-brand img {
+    width: 66px;
+    height: 66px;
+  }
+}
+
+/* MediSlot logo visibility fix */
+.auth-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #f0e9df;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+}
+
+.auth-brand img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  mix-blend-mode: normal;
+  opacity: 1;
+  filter: none;
+}
+
+.auth-brand span {
+  color: #f0e9df;
+  font-size: 30px;
+}
+
+.auth-tagline {
+  color: #c99b6f;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-align: center;
+  margin-top: 8px;
+}
+
+/* MediSlot logo and tagline fix */
+.auth-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.auth-brand img {
+  display: block;
+  width: 76px;
+  height: 76px;
+  flex: 0 0 76px;
+  object-fit: contain;
+  object-position: center;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  mix-blend-mode: normal;
+}
+
+.auth-brand span {
+  color: #f0e9df;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.auth-eyebrow {
+  display: block;
+  text-align: center;
+  margin: 8px 0 20px;
+  color: #c58b63;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
